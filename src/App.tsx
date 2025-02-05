@@ -10,7 +10,7 @@ function App() {
  
 
   return (
-    <Box p={5}>
+    <Box>
      <Routes>
      <Route path="/" element={<HomePage />} />
         <Route path="/counter" element={<CounterPage />} />

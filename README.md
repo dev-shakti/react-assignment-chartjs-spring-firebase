@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# Project Report: Component Structure and State Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Introduction
+This project is a React application designed to showcase various features such as user authentication, dashboard visualizations, and a form. The purpose of this report is to outline the structure of components and the state management strategies used.
 
-Currently, two official plugins are available:
+## 2. Component Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### a) Component Hierarchy
+- **App Component**: Root component containing all routes.
+- **MainLayout**: Contains the navigation and common layout for authenticated users.
+- **DashboardPage**: Displays user data and charts.
+- Other pages: CounterPage, UserFormPage, etc.
 
-## Expanding the ESLint configuration
+### b) Functional and Presentational Components
+- Functional components like `CounterPage` handle the state and logic.
+- Presentational components like `Button` only display UI elements.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 3. State Management Choices
 
-- Configure the top-level `parserOptions` property like this:
+### a) Local State
+- `useState` used for managing local state like form inputs and counters.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### b) Global State
+- React's Context API is used for managing authentication status globally across the app.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 4. Data Flow and Interaction
+- Data flows from parent components to child components via props.
+- Global state like authentication is managed using Context API.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 5. Error Handling
+- Errors are handled using `try/catch` blocks and error boundaries.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 6. Conclusion
+The app structure uses functional components and Context API for state management. Future improvements may include using Redux for complex state management.

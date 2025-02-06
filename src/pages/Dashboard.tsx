@@ -25,7 +25,7 @@ ChartJS.register(
 
 export const DashboardPage = () => {
   const [count, setCount] = useState<number>(0);
-  const [userData, setUserData] = useState<any>(null);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     // Load user data & counter from local storage
@@ -65,6 +65,7 @@ export const DashboardPage = () => {
       </Card>
 
       {/* User Profile Trends */}
+      {userData && ( 
       <Card sx={{ padding: 2 }}>
         <CardContent>
           <Typography variant="h5" sx={{ marginBottom: 2 }}>
@@ -72,7 +73,7 @@ export const DashboardPage = () => {
           </Typography>
           <Line data={userTrendData} />
         </CardContent>
-      </Card>
+      </Card>)}
     </Box>
   );
 };

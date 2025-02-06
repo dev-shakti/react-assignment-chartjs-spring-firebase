@@ -4,17 +4,23 @@ import CounterPage from "./pages/Counter";
 import UserFormPage from "./pages/UserForm";
 import TextEditorPage from "./pages/TextEditorPage";
 import { DashboardPage } from "./pages/Dashboard";
-import { Navbar } from "./components/Navbar";
+import AuthLayout from "./layout/AuthLayout";
+import Signin from "./pages/Signin";
+import MainLayout from "./layout/MainLayout";
 
 function App() {
   return (
     <Box>
-      <Navbar />
       <Routes>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/counter" element={<CounterPage />} />
-        <Route path="/form" element={<UserFormPage />} />
-        <Route path="/editor" element={<TextEditorPage />} />
+        <Route path="/auth" element={<AuthLayout />}>
+          <Route path="signin" element={<Signin />} />
+        </Route>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="counter" element={<CounterPage />} />
+          <Route path="form" element={<UserFormPage />} />
+          <Route path="editor" element={<TextEditorPage />} />
+        </Route>
       </Routes>
     </Box>
   );
